@@ -9,7 +9,20 @@ public class HttpServerSession implements Runnable
     @Override
     public void run()
     {
-        System.out.println("Connection accepted");
+        if(client.isClosed())
+        {
+            System.out.println("Client Disconnected");
+            return;
+        }
+        try
+        {
+            BufferedReader reader = new BufferedReader(new InputStreamReader(client.getInputStream()));
+            String request = reader.readLine();
+            System.out.println(request);
+        }catch(Exception e)
+        {
+            System.err.println("Exception: " + e);
+        }
     }
     public HttpServerSession(Socket s)
     {

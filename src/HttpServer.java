@@ -24,11 +24,13 @@ public class HttpServer
 
                 // run thread
                 exec.execute(task);
+                client.close();
             }
         }
         catch (IOException e)
         {
             e.printStackTrace();
+            System.out.println("here");
         }
     }
 }
