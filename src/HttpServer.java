@@ -9,7 +9,12 @@ public class HttpServer
     private static final ExecutorService exec =  Executors.newFixedThreadPool(10);
     public static void main(String args[])
     {
+
         try{
+
+
+
+
             // Create serverSocket
             ServerSocket server = new ServerSocket(8080);
             while(true){
@@ -24,7 +29,6 @@ public class HttpServer
 
                 // run thread
                 exec.execute(task);
-                client.close();
             }
         }
         catch (IOException e)
